@@ -1,0 +1,13 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY ./package.json .
+
+COPY . .
+
+RUN BUILD_ONLY=true npm install
+
+RUN npm build
+
+CMD ["npm", "run", "start"]
